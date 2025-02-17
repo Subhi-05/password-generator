@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 
-function ResultPassword({
-  password,
-  setPassword,
-  isCopied,
-  setIsCopied,
-  selected,
-}: any) {
+function ResultPassword({ password, isCopied, setIsCopied, selected }: any) {
   const [strengthVal, setStrengthVal] = useState(0);
   const [strength, setStrength] = useState("");
 
@@ -59,8 +53,12 @@ function ResultPassword({
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
-    setIsCopied(true);
+    if (password) setIsCopied(true);
   };
+
+  useEffect(() => {
+    if (!password) setIsCopied(false);
+  }, [password]);
 
   return (
     <>

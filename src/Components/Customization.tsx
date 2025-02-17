@@ -6,7 +6,6 @@ import { FaMinus } from "react-icons/fa";
 interface customizationProps {
   length: number;
   setLength: any;
-  password: string;
   setPassword: any;
   tempPassword: string;
   setTempPassword: any;
@@ -19,7 +18,6 @@ interface customizationProps {
 const Customization = ({
   length,
   setLength,
-  password,
   setPassword,
   tempPassword,
   setTempPassword,
@@ -133,6 +131,11 @@ const Customization = ({
     return newPass;
   };
 
+  const clearPassword = () => {
+    setSelected([]);
+    setTempPassword("");
+  };
+
   useEffect(() => {
     const passSplit = tempPassword.split("");
     const upto = Math.floor(tempPassword.length / 2);
@@ -175,7 +178,7 @@ const Customization = ({
           {buttonList.map((value: any, index: any) => {
             return (
               <Button
-                variant={selected.includes(value) ? "success" : "light"}
+                variant={selected.includes(value) ? "warning" : "light"}
                 onClick={() => buttonFix(value)}
                 key={index}
               >
@@ -188,6 +191,10 @@ const Customization = ({
         <div className="button-go">
           <Button variant="success" onClick={generatePassword}>
             Go
+          </Button>
+
+          <Button variant="danger" onClick={clearPassword}>
+            Clear
           </Button>
         </div>
 

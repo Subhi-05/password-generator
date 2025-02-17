@@ -25,7 +25,6 @@ function PasswordGenerator() {
         <Customization
           length={length}
           setLength={setLength}
-          password={password}
           setPassword={setPassword}
           tempPassword={tempPassword}
           setTempPassword={setTempPassword}
